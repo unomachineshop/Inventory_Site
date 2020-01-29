@@ -3,7 +3,7 @@ __pycache__/
 *.pyc
 
 # Django settings
-settings.py
+#settings.py
 
 # Harvest Project
 /harvest/
