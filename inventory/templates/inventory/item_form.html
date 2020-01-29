@@ -1,0 +1,17 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+<div id="div-border">
+	<form method="post">{% csrf_token %}
+	    {{ form.as_p }}
+	    <input type="submit" value="Submit" />
+	</form>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $(".active").removeClass("active");
+        $("#link-add-item").addClass("active");
+    });
+</script>
+{% endblock %}

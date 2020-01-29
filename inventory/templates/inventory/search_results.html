@@ -1,0 +1,48 @@
+{% extends 'inventory/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="table-div">
+<div id="search-results-div">
+	<h5 id="search-results-title">Search Results</h5>
+</div>
+<div id="search-results-table-div">
+<table border="1">
+<thead>
+	<tr>
+	<th>Name</th>
+	<th>Location</th>
+	<th>Qty</th>
+	</tr>
+</thead>
+<tbody>
+	{% for item in results %}
+	<tr>
+		<td id="name-td"<a href="{% url 'item_detail' item.id %}">{{ item.name_text }}</a></td>
+		<td id="location-td">{{ item.location_text }}</td>
+		<td id="quantity-td">{{ item.quantity_integer }}</td>
+	</tr>
+	{% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2> Hey </h2>
+{% for result in results %}
+<h2> {{ result }} </h2>
+{% endfor %}
+

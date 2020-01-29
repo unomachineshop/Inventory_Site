@@ -1,0 +1,117 @@
+{% extends 'inventory/base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="table-div">
+<div id="detail-div">
+	<h5 id="detail-title">Details</h5>
+</div>
+<div id="detail-table-div">
+<table border="1">
+<thead>
+	<tr>
+	<th>Field</th>
+	<th>Value</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>Name</td>
+		<td>{{ item.name_text }}</td>
+	</tr>
+	<tr>
+		<td>Quantity</td>
+		<td>{{ item.quantity_integer }}</td>
+	</tr>
+	<tr>
+		<td>Link</td>
+		{% if item.link_text != Null %}
+			<td id="link-text-td"><a href="{{ item.link_text }}">{{item.link_text}}</a></td>
+		{% else %}
+			<td id="link-text-td">{{ item.link_text }}</td>
+		{% endif %}
+	</tr>
+	<tr>
+		<td>Price</td>
+		{% if item.price_decimal != Null %}
+			<td>${{item.price_decimal }}</td>
+		{% else %}
+			<td>{{ item.price_decimal }}</td>
+		{% endif %}
+	</tr>
+	<tr>
+		<td>Location</td>
+		<td>{{ item.location_text }}</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>{{ item.description_text }}</td>
+	</tr>
+	<tr>
+		<td>Vendor</td>
+		<td>{{ item.vendor_text }}</td>
+	</tr>
+	<tr>
+		<td>Vendor ID</td>
+		<td>{{ item.vendor_id_text }}</td>
+	<tr>
+		<td>Manufacturer</td>
+		<td>{{ item.manufacturer_text}}</td>
+	</tr>
+	<tr>
+		<td>Manufacturer ID</td>
+		<td>{{ item.manufacturer_id_text }}</td>
+	</tr>
+	<tr>
+		<td>Created Date</td>
+		<td>{{ item.created_date }}</td>
+	</tr>
+	<tr>
+		<td>Last Modified</td>
+		<td>{{ item.last_modified_date }}</td>
+	</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="inline-buttons-detail">
+<form id="back-button-detail" action="{% url 'item_list' %}">
+	<input type="image" src="{% static 'inventory/back.svg' %}" title="Back" alt="Submit" width=24 height="24">
+</form>
+<form id="edit-button-detail" action="{% url 'item_edit' item.id %}">
+	<input type="image" src="{% static 'inventory/edit.svg' %}" title="Edit" alt="Submit" width=24 height="24">
+</form>
+<form id="remove-button-detail" action="{% url 'item_delete' item.id %}">
+	<input type="image" src="{% static 'inventory/remove.svg' %}" title="Remove" alt="Submit" width=24, height="24">
+</form>
+</div>
+
+<div id="transaction-div">
+	<h5 id="transaction-title"> Transaction History </h5>
+</div>
+<div id="table-div">
+<div id="transaction-table-div">
+<table border="1">
+<thead>
+	<tr>
+	<th>Username</th>
+	<th>Type</th>
+	<th>Qty</th>
+	<th>Time</th>
+	</tr>
+</thead>
+<tbody>
+	{% for history in history_list %}
+	<tr>
+		<td>{{ history.username_text }}</td>
+		<td>{{ history.type_text }}</td>
+		<td>{{ history.quantity_integer }}</td>
+		<td>{{ history.last_modified_date }}</td>
+	</tr>
+	{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+{% endblock %}

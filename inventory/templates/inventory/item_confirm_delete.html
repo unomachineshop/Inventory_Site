@@ -1,0 +1,12 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+<div id="div-border">
+<form method="post">{% csrf_token %}
+	<h3 id="h3-delete">Are you sure you want to delete,</h3> 
+	<h5 id="h5-delete">"{{ object }}"?</h5>
+	<input id="delete-submit"type="submit" name="delete" value="Delete" />
+	<input type="button" name="back" value="Do Not Delete" onClick="location.href='{% url 'item_list' %}'" />
+</form>
+</div>
+{% endblock %}
