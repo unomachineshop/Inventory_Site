@@ -3,31 +3,31 @@
 
 {% block content %}
 
-{% for key, value in data.items %}
+{% for key, value in data.items %}	
 	<div id="item-list-div">
 		<h5 id="item-list-title">{{ key }}</h5>
 	</div>	
 	<div id="table-div">
-	<div id="item-list-table-div">
-	<table border="1">
-	<thead>
-    		<tr>
-    		<th>Name</th>
-    		<th>Quantity</th>
-    		</tr>
-	</thead>
-	<tbody>
-    	{% for item in value %}
-    		<tr>
-	    	<td id="name-td"><a href="{% url 'item_detail' item.id %}">{{ item.name_text }}</a></td>
-	    	<td id="quantity-td">{{ item.quantity_integer }}</td>
-    		</tr>
-    	{% endfor %}
-	</tbody>
-	</table>
-	</div>
+		<div id="item-list-table-div">
+			<table border="1">
+				<thead>
+    				<tr>
+    					<th>Name</th>
+    					<th>Quantity</th>
+    				</tr>
+				</thead>
+				<tbody>
+    				{% for item in value %}
+    					<tr>
+	    					<td id="name-td"><a href="{% url 'item_detail' item.id %}">{{ item.name_text }}</a></td>
+	    					<td id="quantity-td">{{ item.quantity_integer }}</td>
+    					</tr>
+    				{% endfor %}	
+				</tbody>
+			</table>
+		</div>
 	</div>
 {% endfor %}
 
-
 {% endblock %}
+

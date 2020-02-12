@@ -1,0 +1,27 @@
+{% extends 'inventory/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="table-div">
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Item</th>
+				<th>User</th>
+				<th>Quantity</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in data %}
+				<tr>
+					<td id="name-td"><a href="{% url 'item_detail' item.item_object_id %}">{{ item }}</a></td>
+					<td>{{ item.username_text }}</td>
+					<td id="quantity-td">{{ item.quantity_integer }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{% endblock %}
